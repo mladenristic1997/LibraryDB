@@ -261,9 +261,15 @@ public class Main {
 						case 4:
 							System.out.println("Enter bookId of the book you want to rent");
 							int rentBookId = scan.nextInt();
-							Book rentBook = BookManager.getRow(rentBookId);
-							Library.rentBook(user, rentBook);
-							System.out.println("");
+							if(BookManager.isExists(rentBookId)) {
+								Book rentBook = BookManager.getRow(rentBookId);
+								Library.rentBook(user, rentBook);
+								System.out.println("");								
+							}
+							else {
+								System.out.println("Book doesn't exist");
+								System.out.println("");
+							}
 							break;
 						case 5:
 							System.out.println("Enter bookId of the book you want to return");
